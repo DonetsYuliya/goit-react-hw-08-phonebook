@@ -40,8 +40,8 @@ const PhonebookForm = () => {
   };
 
   return (
-    <div>
-      <h1 className={css.title}>Phonebook</h1>
+    <div className={css.contactsFormWrapper}>
+      <h1>Phonebook</h1>
       <form className={css.form} onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input

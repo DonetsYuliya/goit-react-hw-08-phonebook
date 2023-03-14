@@ -1,14 +1,13 @@
+.contactsFormWrapper {
+  margin-left: 40px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
   padding: 10px;
   width: 230px;
   border: 1px solid black;
-}
-
-.title {
-  margin-left: 40px;
 }
 
 .input {
@@ -34,24 +33,20 @@
 }
 
 .userMenuWrapper {
-  position: fixed;
-  top: 10px;
-  right: 30px;
   display: flex;
-  gap: 10px;
+  margin-left: 40px;
+  gap: 15px;
   font-weight: 600;
-  font-size: 28px;
+  font-size: 25px;
   color: rgb(63, 12, 184);
 }
 
 .logoutBtn {
-  font-weight: 600;
   font-size: 25px;
   color: rgb(63, 12, 184);
   cursor: pointer;
   border-color: rgb(63, 12, 184);
   border-radius: 15px;
-  line-height: 0;
 }
 
 .navList {
