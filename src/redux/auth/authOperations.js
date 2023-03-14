@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 import { signup, login, getCurrent, logout } from 'services/userAuthApi';
 
 export const userAuth = createAsyncThunk(
@@ -28,10 +27,10 @@ export const userLogin = createAsyncThunk(
 
 export const userCurrent = createAsyncThunk(
   'auth/userCurrent',
-  async (_, { rejectWithValue, authToken }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const token = useSelector(authToken);
-      const result = await getCurrent(token);
+      const result = await getCurrent(data);
+      console.log(result);
       return result;
     } catch ({ response }) {
       return rejectWithValue(response);
