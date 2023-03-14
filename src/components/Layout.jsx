@@ -1,9 +1,7 @@
 import Navigation from './Navigation';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
-  const { id } = useParams();
-
   return (
     <>
       <header>
