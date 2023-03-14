@@ -32,3 +32,38 @@
   margin-bottom: 25px;
   margin-left: 40px;
 }
+
+.userMenuWrapper {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 28px;
+  color: rgb(63, 12, 184);
+}
+
+.logoutBtn {
+  font-weight: 600;
+  font-size: 25px;
+  color: rgb(63, 12, 184);
+  cursor: pointer;
+  border-color: rgb(63, 12, 184);
+  border-radius: 15px;
+  line-height: 0;
+}
+
+.navList {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 600;
+  color: rgb(63, 12, 184);
+  font-style: oblique;
+}

@@ -12,38 +12,38 @@ const contactsSlice = createSlice({
   initialState: contactsInitialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, store => {
-        store.isLoading = true;
+      .addCase(fetchContacts.pending, state => {
+        state.isLoading = true;
       })
-      .addCase(fetchContacts.fulfilled, (store, { payload }) => {
-        store.isLoading = false;
-        store.items = payload;
+      .addCase(fetchContacts.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items = payload;
       })
-      .addCase(fetchContacts.rejected, (store, { payload }) => {
-        store.isLoading = false;
-        store.error = payload;
+      .addCase(fetchContacts.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       })
-      .addCase(addContact.pending, store => {
-        store.isLoading = true;
+      .addCase(addContact.pending, state => {
+        state.isLoading = true;
       })
-      .addCase(addContact.fulfilled, (store, { payload }) => {
-        store.isLoading = false;
-        store.items.push(payload);
+      .addCase(addContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items.push(payload);
       })
-      .addCase(addContact.rejected, (store, { payload }) => {
-        store.isLoading = false;
-        store.error = payload;
+      .addCase(addContact.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       })
-      .addCase(deleteContact.pending, store => {
-        store.isLoading = true;
+      .addCase(deleteContact.pending, state => {
+        state.isLoading = true;
       })
-      .addCase(deleteContact.fulfilled, (store, { payload }) => {
-        store.isLoading = false;
-        store.items = store.items.filter(item => item.id !== payload);
+      .addCase(deleteContact.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.items = state.items.filter(item => item.id !== payload);
       })
-      .addCase(deleteContact.rejected, (store, { payload }) => {
-        store.isLoading = false;
-        store.error = payload;
+      .addCase(deleteContact.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       });
   },
 });

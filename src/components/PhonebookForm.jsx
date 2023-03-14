@@ -6,7 +6,7 @@ import css from './style.module.css';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
   const contacts = useSelector(contactsState);
@@ -23,7 +23,7 @@ const PhonebookForm = () => {
     if (name === 'name') {
       return setName(value);
     }
-    setPhone(value);
+    setNumber(value);
   };
 
   const handleSubmit = evt => {
@@ -33,10 +33,10 @@ const PhonebookForm = () => {
       setName('');
       return false;
     }
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
 
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -55,13 +55,13 @@ const PhonebookForm = () => {
           required
         />
 
-        <label htmlFor="phone">Number</label>
+        <label htmlFor="number">Number</label>
         <input
-          value={phone}
+          value={number}
           onChange={handleInput}
           className={css.input}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

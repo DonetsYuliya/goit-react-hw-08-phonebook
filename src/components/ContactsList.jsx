@@ -22,10 +22,10 @@ const ContactsList = () => {
 
   const isFilteredContacts = getFilteredContacts();
 
-  const item = isFilteredContacts.map(({ id, name, phone }) => {
+  const item = isFilteredContacts.map(({ id, name, number }) => {
     return (
       <li className={css.item} key={id}>
-        {name}: {phone}{' '}
+        {name}: {number}{' '}
         <button type="button" onClick={() => dispatch(deleteContact(id))}>
           Delete
         </button>

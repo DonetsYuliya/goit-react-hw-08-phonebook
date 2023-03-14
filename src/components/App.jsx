@@ -1,26 +1,37 @@
-import PhonebookForm from 'components/PhonebookForm';
-import ContactsList from 'components/ContactsList';
-import ContactsFilter from 'components/ContactsFilter';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/contactsOperations';
-import { getIsLoading, getError } from 'redux/contacts/contactsSelector';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+const Layout = lazy(() => import('./Layout'));
+const HomePage = lazy(() => import('../pages/HomePage'));
+const UserMenu = lazy(() => import('./UserMenu'));
+const PrivateRoute = lazy(() => import('./PrivateRoute'));
+const PublicRoute = lazy(() => import('./PublicRoute'));
+const NotFound = lazy(() => import('../pages/NotFound'));
+const RegisterForm = lazy(() => import('../pages/RegisterForm'));
+const LoginForm = lazy(() => import('../pages/LoginForm'));
+const Contacts = lazy(() => import('../pages/Contacts'));
 
-export const App = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
+const App = () => {
   return (
-    <>
-      <PhonebookForm />
-      <ContactsFilter />
-      {isLoading && !error && <b>Request in progress...</b>}
-      <ContactsList />
-    </>
+    <Suspense fallback={<p>Loading ...</p>}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+
+        <Route element={<PublicRoute />}>
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+        </Route>
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/contacts" element={<Contacts />}>
+            <Route index element={<UserMenu />} />
+          </Route>
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 };
+export default App;
